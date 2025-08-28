@@ -21,7 +21,7 @@ fs.mkdirSync(outDir, { recursive: true });
 
 (async () => {
   // First, authenticate with username/password to get session
-  const authRes = await fetch(`${adminBase}/auth/session/`, {
+  const authRes = await fetch(`${adminBase}/session/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
