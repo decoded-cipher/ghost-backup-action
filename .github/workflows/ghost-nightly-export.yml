@@ -34,12 +34,11 @@ jobs:
         with:
           node-version: "20"
 
-      - run: npm install jsonwebtoken
-
       - name: Export content+settings JSON
         env:
           GHOST_ADMIN_API_URL: ${{ secrets.GHOST_ADMIN_API_URL }}
-          GHOST_ADMIN_API_KEY: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          GHOST_USERNAME: ${{ secrets.GHOST_USERNAME }}
+          GHOST_PASSWORD: ${{ secrets.GHOST_PASSWORD }}
           BACKUP_DATE: ${{ needs.prepare.outputs.date }}
         run: node .github/scripts/ghost-export-json.mjs
 
@@ -62,12 +61,11 @@ jobs:
         with:
           node-version: "20"
 
-      - run: npm install jsonwebtoken
-
       - name: Export members CSV
         env:
           GHOST_ADMIN_API_URL: ${{ secrets.GHOST_ADMIN_API_URL }}
-          GHOST_ADMIN_API_KEY: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          GHOST_USERNAME: ${{ secrets.GHOST_USERNAME }}
+          GHOST_PASSWORD: ${{ secrets.GHOST_PASSWORD }}
           BACKUP_DATE: ${{ needs.prepare.outputs.date }}
         run: node .github/scripts/ghost-export-members.mjs
 
